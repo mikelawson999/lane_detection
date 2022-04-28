@@ -1,0 +1,27 @@
+_sobel_linear_assembly	.cproc	i00, i01, i02,/* i10, i12*/, i20, i21, i22
+						.reg	/*O, H, V,*/ sum1, sum2, sum3, sum4, sum5, sum 6//, prod1, prod2
+
+						MPY		2, i01, prod1
+						ADD		prod1, i00, sum1
+						ADD		sum1, i02, sum2			//sum2 needs to be taken away
+						MPY		2, i21, prod2
+						ADD		prod2, i20, sum3
+						ADD		sum3, i22, sum4
+						SUB		sum4, sum2, sum5		//Horizontal
+
+						.return sum5
+						.endproc
+
+						//MPY		2, i10, prod1
+						//ADD		prod1, i00, sum1
+						//ADD		sum1, i20, sum2			//sum2 needs to be taken away
+						//MPY		2, i12, prod2
+						//ADD		prod2, i02, sum3
+						//ADD		sum3, i22, sum4
+						//SUB		sum4, sum2, sum6		//Vertical
+
+
+
+
+
+
